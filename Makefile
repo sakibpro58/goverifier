@@ -1,11 +1,19 @@
-.PHONY: run build_docker run_docker
+# Set the Go version and container image name
+GO_VERSION=1.21
+IMAGE_NAME=goverifier
 
+# Build the Go app and the Docker image
+build:
+    go mod tidy
+    go build -o goverifier .
 
+docker-build:
+    docker build -t $(IMAGE_NAME) .
+
+# Run the app
 run:
-	go build . && ./goverifier
+    ./goverifier
 
-build_docker:
-	docker build -t goverifier .
-
-run_docker:
-	docker run -p 8080:8080 -t goverifier
+# Clean the project
+clean:
+    rm goverifier
