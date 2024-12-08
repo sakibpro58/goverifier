@@ -1,15 +1,11 @@
-FROM golang:1.7.4-alpine
+FROM golang:1.21-alpine
 
-MAINTAINER me@abimaelmartell.com
-
-RUN mkdir -p $GOPATH/src/github.com/abimaelmartell/goverify
-
-WORKDIR "$GOPATH/src/github.com/abimaelmartell/goverify"
+WORKDIR /app
 
 COPY . .
 
-RUN go get
-
-ENTRYPOINT ["/go/bin/goverify"]
+RUN go mod tidy && go build -o goverify .
 
 EXPOSE 8080
+
+ENTRYPOINT ["/app/goverify"]
