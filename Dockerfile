@@ -1,6 +1,6 @@
 FROM golang:1.21-alpine
 
-WORKDIR /app
+WORKDIR /
 
 # Install dependencies and build the Go app
 RUN if [ ! -f go.mod ]; then go mod init goverifier; fi
