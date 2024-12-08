@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN go mod tidy && go build -o goverify .
+RUN go mod tidy && go build -o goverifier .
 
 EXPOSE 8080
 
-ENTRYPOINT ["/app/goverify"]
+ENTRYPOINT ["/app/goverifier"]
