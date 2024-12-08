@@ -2,10 +2,10 @@
 
 
 run:
-	go build . && ./goverify
+	go build . && ./goverifier
 
 build_docker:
-	docker build -t goverify .
+	docker build -t goverifier .
 
 run_docker:
-	docker run -p 8080:8080 -t goverify
+	docker run -p 8080:8080 -t goverifier
